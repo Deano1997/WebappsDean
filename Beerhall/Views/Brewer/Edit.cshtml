@@ -1,0 +1,30 @@
+﻿@model Beerhall.Models.ViewModels.BrewerEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method=" post">
+    <div class="form-group"> <!-- dit moet een form group div zijn -->
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Street"></label>
+        <input asp-for="Street" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Postalcode"></label>
+        <input asp-for="Postalcode" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Turnover"></label>
+        <input asp-for="Turnover" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-controller="Brewer" asp-action="Index">Cancel</a>
+    </div>
+</form>
+

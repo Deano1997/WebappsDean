@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Beerhall.Models.Domain.Brewer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped table-condensed table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Street
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Turnover
+            </th>
+            <th>
+                Date Established
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var brewer in Model) {
+        <tr>
+            <td>
+                @brewer.Name
+            </td>
+            <td>
+                @brewer.Street
+            </td>
+            <td>
+                @brewer.Location?.PostalCode @brewer.Location?.Name
+            </td>
+            <td>
+                @brewer.Turnover
+            </td>
+            <td>
+                @brewer.DateEstablished?.Date.ToString("d")
+            </td>
+            <td>
+                <a asp-controller="Brewer" asp-action="Edit" asp-route-id="@brewer.BrewerId">Edit</a> 
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>@ViewData["TotalTurnover"] €</p>
